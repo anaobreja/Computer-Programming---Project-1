@@ -1,0 +1,64 @@
+Copyright 2022 Obreja Ana-Maria Grupa 311CA
+Tema 1
+Programarea Calculatoarelor 
+
+Problema 1 – Infinite product
+Programul primeste de la tastatura perechi de numere ce reprezinta coordonatele a doi vectori a si b si pe baza acestora calculeaza 
+produsul scalar al vectorilor, al 2 lea maxim si norma fiecarui vector. Numerele sunt citite in baza 8.
+Am folosit o functie ajutatoare, conversion_b10, care sa transforme valorille din baza 8 in baza 10. Deoarece stocarea coordontelor 
+vectorilor este ineficienta, am facut operatiile imediat dupa citirea coordonatelor. Atat produsul, cat si norma sunt calculate cu 
+ajutorul formulelor matematice. Pentru al 2 lea maxim, verificam mai intai daca valoarea coordonatei citite este mai mare decat primul
+maxim si il inlocuim, urmand ca al 2 lea maxim sa preia valoarea maximului. Daca valoarea coordonatei este mai mica decat primul maxim, 
+dar mai mare decat al 2 lea maxim, atunci al 2 lea maxim va primi valoarea coordonatei.    
+
+Problema 2 – Simple queries
+Programul primeste de la tastatura caractere, pe baza carora va executa: 
+-afisarea numarul de aparitii a unui caracter, la primirea literei Q;
+-stergerea numarului de aparitii a unui caracter, la primirea literei E;
+-afisarea unui numar de caractere cu cele mai multe aparitii, la primirea literei T.
+Programul foloseste o functie ajutatoare, fractie, care afiseaza, cu ajutorul algorimului de cel mai mare divizor comun, o fractie 
+ireductibila. 
+In main sunt declarate si initializate variabilele. Am folosit vectorul de frecventa cu pozitiile de la 97 pana la 122, pentru a 
+corespunde codului ASCII al literelor mici. Se citesc caractere de la tastatura, pana cand caracterul dat este invalid (diferit de 
+literele mici sau de Q, E, T). 
+Sunt posibile in momentul citirii unui caracter valid 4 cazuri:
+-caracterul este litera mica: valoarea din vectorul de frecventa corespunzatoare creste, crestem valoarea nr citite de la ultima 
+alerta, a numerelor totale si a  maximului de aparitii, daca este cazul. Verificam daca se indeplinesc conditiile pentru a afisa 
+o alerta (s-au citit cel putin 5 litere mici de la ultima alerta, excluzandu-le pe cele folosite la primirea literelor Q, E, exista 
+o litera cu numarul de aparitii cel putin egal cu numarul total de caractere);
+-caracterul este litera Q: citim litera mica pentru care vrem sa afisam numarul de aparitii; afisam litera si valoarea vectorului de 
+frecventa corespunzatoare;
+-caracterul este litera E: citim litera pentru are vrem sa stergem numarul de aparitii; scadem din nr total valoarea vectorului de 
+frecventa corespunzatoare, apoi ii dam vectorului valoarea 0 pentru litera respective. Cautam o noua valoare pentru maximul de 
+aparitii;
+-caracterul este litera T: citim numarul de litere care trebuie afisate si le cautam in functie de maximul de numarul de aparitii.
+
+Problema 3
+Programul simuleaza mutarea unei piese pe o tabla de sah in functie de valorile scrise pe biletul corespunzator pozitiei pe care ne 
+aflam.
+Prin convetie, plecarea se face de pe casuta din stanga sus, care este alba.
+Am folosit o matrice de frecventa ca sa retina de cate ori piesa a trecut pe o anumita casuta. In cazul in care valoarea din matricea
+de frecventa va fi diferita de 0, iar biletelul corespunzator pozitiei va contine valoarea 0, executia va lua sfarsit. In caz contrar,
+calculam distanta parcursa dar si noua pozitie, in functie de paritatea liniilor si a coloanelor (daca liniile si coloanele au aceeasi
+paritate, atunci casuta este alba, altfel, casuta este neagra). Afisam distanta finala si pozitia pe care am ajuns. Pentru a afisa 
+reprezentarea coloanei existenta in Microsoft Excel, am folosit o functie ajutatoare, index.
+
+Problema 4
+Programul primeste de la tastatura un numar n, un numar m care reprezinta cate operatii vor fi facute si o matrice cu dimensiunea 
+n * n.
+Pot fi efectuate 6 tipuri de operatii:
+1. determinarea numerelor care pot fi puse intr-o casuta in functie de linie;
+2. determinarea in functie de coloana;
+3. determinarea in functie de careu;
+4. determinarea in functie de linie, coloana, careu (daca punerea valorii in celula nu duce la o configuratie invalida);
+5. punerea unei valori intr-o casuta data, daca initial valoarea este 0;
+6. verificare configuratie invalida, valida, sau daca jocul este castigat.
+Am folosit functii ajutatoare, precum:
+-citire, in care este citita matricea;
+-check_linie; am lucrat cu vector de frecventa care retine ce valori cuprinse intre 1 si n * n se gasesc pe linie;
+-check_coloana (analog, pentru coloana);
+-check_careu (analog, pentru careu);
+-print_conditie: este folosita pentru primele 3 cazuri si afiseaza ce cifre pot fi puse pe linie, coloana sau careu in functie de
+ vectorul de frecventa;
+-conditie ok: este folosita pentru cazul 6, si afiseaza 1 daca matricea are o configuratie invalida, 0 daca se mai pot pune cifre in 
+matrice sau 2 daca matricea este completa si valida (jocul este castigat).
